@@ -4,19 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_registroUser" >
+    tools:context=".activity_registroUser"
+    android:background="@drawable/fondo">
 
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/imageView12"
+        android:layout_width="351dp"
+        android:layout_height="221dp"
+        android:layout_marginTop="125dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fondo" />
+        android:background="@drawable/anadir" />
 
     <TextView
         android:id="@+id/textView7"
@@ -29,17 +28,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView8" />
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="348dp"
-        android:layout_height="221dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:srcCompat="@drawable/anadir" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
@@ -51,7 +40,7 @@
         android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="@+id/imageView8"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
     <TextView

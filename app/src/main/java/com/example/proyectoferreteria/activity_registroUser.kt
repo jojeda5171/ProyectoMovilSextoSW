@@ -68,10 +68,9 @@ class activity_registroUser : AppCompatActivity() {
         Executors.newSingleThreadExecutor().execute() {
             appDataBase.userDao().insert(user)
             runOnUiThread {
-                Toast.makeText(this, "Ususrio registrado correctamente", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_LONG).show()
                 onBackPressed()
             }
         }
-
     }
 }

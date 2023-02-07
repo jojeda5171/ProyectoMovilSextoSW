@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="Verde">#97BD13</color>
     <color name="naranja">#DB9016</color>
+    <color name="rojo">#F01D24</color>
+    <color name="azul">#510FD9</color>
+    <color name="celeste">#12D9FC</color>
 </resources>
