@@ -16,8 +16,8 @@ interface ProductDAO {
     @Update
     fun update(product: Product)
 
-    //@Delete
-    //fun delete(product: ProductoE)
+    @Delete
+    fun delete(product: Product)
 
     //Devuelve toda la lista de mascotas
     @Query("select * from tblProduct order by id")

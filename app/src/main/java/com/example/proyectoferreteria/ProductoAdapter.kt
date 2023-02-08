@@ -10,6 +10,8 @@ import com.squareup.picasso.Picasso
 
 class ProductoAdapter (var productos:List<Product> = emptyList()): RecyclerView.Adapter<ProductoAdapter.ProductoAdapterViewHolder>() {
     //definir las funciones para manipular los registro
+    lateinit var setOnClickListenerProductEdit: (Product)->Unit
+    lateinit var setOnClickListenerProductDelete:(Product)->Unit
     //Crear el ViewHolder
     inner class ProductoAdapterViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         private var binding : ItemProductosBinding = ItemProductosBinding.bind(itemView)
@@ -19,6 +21,14 @@ class ProductoAdapter (var productos:List<Product> = emptyList()): RecyclerView.
             binding.txtPrecio.text = producto.costo
             binding.txtCantidad.text=producto.cantidad
             Picasso.get().load(producto.foto).error(R.drawable.ic_launcher_background).into(binding.imageView3)
+
+            binding.btnEditar.setOnClickListener {
+                setOnClickListenerProductEdit(producto)
+            }
+
+            binding.btnEliminar.setOnClickListener {
+                setOnClickListenerProductDelete(producto)
+            }
         }
     }
 

@@ -3,8 +3,11 @@ package com.example.proyectoferreteria
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.proyectoferreteria.dataBase.AppDataBaseProduct
 import com.example.proyectoferreteria.databinding.ActivityDetalleProductoBinding
+import com.example.proyectoferreteria.utils.Constants
+import java.util.concurrent.Executors
 
 class detalleProducto : AppCompatActivity() {
     private lateinit var binding: ActivityDetalleProductoBinding
@@ -28,7 +31,7 @@ class detalleProducto : AppCompatActivity() {
         cargarAdaptador()
         cargarDatos()
         regresar()
-        registrar()
+        eventos()
     }
 
     fun cargarAdaptador() {
@@ -47,9 +50,27 @@ class detalleProducto : AppCompatActivity() {
         }
     }
 
-    fun registrar(){
+    fun eventos(){
         binding.fblAnadirProducto.setOnClickListener {
             startActivity(Intent(this, registroProduct::class.java))
+        }
+
+        adapter.setOnClickListenerProductEdit={
+            val bundle=Bundle().apply {
+                putSerializable(Constants.KEY_PRODUCT,it)
+            }
+            startActivity(Intent(this, registroProduct::class.java).apply {
+                putExtras(bundle)
+            })
+        }
+
+        adapter.setOnClickListenerProductDelete={
+            Executors.newSingleThreadExecutor().execute(){
+                appDataBaseProduct.productDao().delete(it)
+                runOnUiThread {
+                    Toast.makeText(this, "Producto Eliminado", Toast.LENGTH_LONG).show()
+                }
+            }
         }
     }
 }

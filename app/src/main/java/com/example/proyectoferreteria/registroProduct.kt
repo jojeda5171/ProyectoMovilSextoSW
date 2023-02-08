@@ -35,6 +35,7 @@ class registroProduct : AppCompatActivity() {
             binding.edtCantidad.setText(product.cantidad)
             binding.edtCostoProducto.setText(product.costo)
             binding.edtDescripcionProducto.setText(product.descripcion)
+            binding.edtUrlImg.setText(product.foto)
         } ?: kotlin.run {
             binding.btnRegistrarProducto.text = "Registar"
             binding.edtNombreProducto.setText("")
@@ -42,6 +43,7 @@ class registroProduct : AppCompatActivity() {
             binding.edtCantidad.setText("")
             binding.edtCostoProducto.setText("")
             binding.edtDescripcionProducto.setText("")
+            binding.edtUrlImg.setText("")
         }
         binding.edtNombreProducto.requestFocus()
     }
@@ -53,11 +55,11 @@ class registroProduct : AppCompatActivity() {
             val cantidad = binding.edtCantidad.text.toString()
             val costo = binding.edtCostoProducto.text.toString()
             val descripcion = binding.edtDescripcionProducto.text.toString()
-            val foto=binding.edtUrlImg.text.toString()
+            val foto = binding.edtUrlImg.text.toString()
             if (id == 0) {
                 agregar(Product(0, nombre, tipo, costo, descripcion, cantidad, foto))
             } else {
-                //editar(Pet(id, nombre, raza, preferencias))
+                editar(Product(id, nombre, tipo, costo, descripcion, cantidad, foto))
             }
         }
     }
@@ -67,6 +69,16 @@ class registroProduct : AppCompatActivity() {
             appDataBaseProduct.productDao().insert(product)
             runOnUiThread {
                 Toast.makeText(this, "Producto registrado correctamente", Toast.LENGTH_LONG).show()
+                onBackPressed()
+            }
+        }
+    }
+
+    fun editar(product: Product) {
+        Executors.newSingleThreadExecutor().execute() {
+            appDataBaseProduct.productDao().update(product)
+            runOnUiThread {
+                Toast.makeText(this, "Producto actualizado", Toast.LENGTH_LONG).show()
                 onBackPressed()
             }
         }
