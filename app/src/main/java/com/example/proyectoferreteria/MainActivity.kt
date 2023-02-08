@@ -6,12 +6,13 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.proyectoferreteria.dataBase.AppDataBase
 import com.example.proyectoferreteria.databinding.ActivityMainBinding
-import com.example.proyectoferreteria.databinding.ActivityRegistroUserBinding
-import kotlinx.coroutines.launch
+import com.example.proyectoferreteria.utils.Constants
 import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
+    var codigo = ""
+    //var binding: ActivityMainBinding
 
     private val appDataBase: AppDataBase by lazy {
         AppDataBase.getInstance(this)
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     fun openRegistrarUser() {
         binding.btnRegistrar.setOnClickListener {
-            this.finish()
+            //this.finish()
             startActivity(Intent(this, activity_registroUser::class.java))
         }
     }
@@ -58,9 +59,19 @@ class MainActivity : AppCompatActivity() {
                             binding.edtUsuario.requestFocus()
                         }
                     } else {
+                        this.codigo = usuario.usuario
                         runOnUiThread {
-                            startActivity(Intent(this, activity_inicio::class.java))
-                            Toast.makeText(this, "Bienvenido: "+usuario.usuario, Toast.LENGTH_LONG).show()
+                            val bundleMain=Bundle().apply {
+                                putSerializable(Constants.KEY_USER, usuario)
+                            }
+                            startActivity(Intent(this, activity_inicio()::class.java).apply {
+                                putExtras(bundleMain)
+                            })
+                            Toast.makeText(
+                                this,
+                                "Bienvenido: " + usuario.usuario,
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     }
                 }

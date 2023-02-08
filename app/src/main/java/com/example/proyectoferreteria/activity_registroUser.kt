@@ -9,7 +9,7 @@ import com.example.proyectoferreteria.model.User
 import com.example.proyectoferreteria.utils.Constants
 import java.util.concurrent.Executors
 
-class activity_registroUser : AppCompatActivity() {
+class activity_registroUser() : AppCompatActivity() {
     private lateinit var binding: ActivityRegistroUserBinding
     private var id = 0
     private val appDataBase: AppDataBase by lazy {
@@ -21,6 +21,7 @@ class activity_registroUser : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         inicizalizar()
+        //this.actualizar()
         evento()
     }
 
@@ -28,6 +29,7 @@ class activity_registroUser : AppCompatActivity() {
         val bundle = intent.extras
         bundle?.let {
             val user = bundle.getSerializable(Constants.KEY_USER) as User
+            //val user = appDataBase.userDao().getUserById(1)
             binding.btnRegAddUser.text = "Actualizar"
             id = user.id
             binding.edtRegNombre.setText(user.nombre)
@@ -46,6 +48,8 @@ class activity_registroUser : AppCompatActivity() {
             binding.edtRegPass.setText("")
         }
         binding.edtRegNombre.requestFocus()
+
+
     }
 
     private fun evento() {
@@ -59,7 +63,7 @@ class activity_registroUser : AppCompatActivity() {
             if (id == 0) {
                 agregar(User(0, nombre, apellido, email, direccion, user, pass))
             } else {
-                //editar(Pet(id, nombre, raza, preferencias))
+                editar(User(id, nombre, apellido, email, direccion, user, pass))
             }
         }
     }
@@ -68,7 +72,18 @@ class activity_registroUser : AppCompatActivity() {
         Executors.newSingleThreadExecutor().execute() {
             appDataBase.userDao().insert(user)
             runOnUiThread {
-                Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_LONG)
+                    .show()
+                onBackPressed()
+            }
+        }
+    }
+
+    fun editar(user: User) {
+        Executors.newSingleThreadExecutor().execute() {
+            appDataBase.userDao().update(user)
+            runOnUiThread {
+                Toast.makeText(this, "Perfil actualizado", Toast.LENGTH_LONG).show()
                 onBackPressed()
             }
         }

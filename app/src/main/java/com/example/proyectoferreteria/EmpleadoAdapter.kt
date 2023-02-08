@@ -4,19 +4,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.proyectoferreteria.databinding.ActivityInicioBinding
 import com.example.proyectoferreteria.databinding.ItemEmpleadosBinding
 import com.example.proyectoferreteria.model.User
 
 class EmpleadoAdapter (var empleados:List<User> = emptyList()): RecyclerView.Adapter<EmpleadoAdapter.EmpleadoAdapterViewHolder>() {
 
+    private lateinit var bindingActualizar:ActivityInicioBinding
     //definir las funciones para manipular los registro
+    lateinit var setOnClickListenerEmpleadoEdit:(User)->Unit
     //Crear el ViewHolder
     inner class EmpleadoAdapterViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
         private var binding : ItemEmpleadosBinding=ItemEmpleadosBinding.bind(itemView)
+
         fun bind(usuario: User){
             binding.txtNombre.text =usuario.nombre+" "+usuario.apellido
             binding.txtEmail.text = usuario.email
             binding.txtItemUsuario.text = usuario.usuario
+
+            //bindingActualizar.btnPerfil.setOnClickListener {
+            //    setOnClickListenerEmpleadoEdit(usuario)
+            //}
         }
     }
 

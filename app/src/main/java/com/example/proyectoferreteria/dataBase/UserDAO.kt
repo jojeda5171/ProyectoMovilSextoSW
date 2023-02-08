@@ -23,7 +23,7 @@ interface UserDAO {
     fun getUsers(): LiveData<List<User>>
 
     @Query("select * from tblUser where id=:idInput")
-    fun getUserById(idInput: Int): List<User>
+    fun getUserById(idInput: Int): User
 
     @Query("select * from tblUser where usuario=:userInput and pass=:passInput")
     fun getUserByUserAndPass(userInput: String, passInput: String): User
