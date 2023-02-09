@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity_registroUser"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondoregisstro">
 
     <ImageView
         android:id="@+id/imageView12"
@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/anadir" />
+        android:background="@drawable/ingenieros" />
 
     <TextView
         android:id="@+id/textView7"
@@ -23,7 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
         android:text="REGISTRO"
-        android:textColor="@color/black"
+        android:background="#80000000"
+        android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,8 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
-        android:text="Nombre"
-        android:textColor="@color/black"
+        android:text="NOMBRE:"
+        android:background="#80000000"
+        android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,8 +51,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
-        android:text="Apellido"
-        android:textColor="@color/black"
+        android:text="APELLIDO:"
+        android:background="#80000000"
+        android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,20 +61,32 @@
 
     <EditText
         android:id="@+id/edtRegNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
         android:layout_marginStart="35dp"
+        android:layout_marginEnd="40dp"
+        android:background="#80000000"
         android:ems="10"
+        android:hint="Ingrese su nombre"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hint"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
 
     <EditText
         android:id="@+id/edtRegApellido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="#80000000"
         android:ems="10"
+        android:hint="Ingrese su apellido"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hint"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/edtRegNombre"
         app:layout_constraintTop_toTopOf="@+id/textView9" />
 
@@ -81,8 +96,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
-        android:text="Email"
-        android:textColor="@color/black"
+        android:text="EMAIL:"
+        android:background="#80000000"
+        android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,10 +106,16 @@
 
     <EditText
         android:id="@+id/edtRegEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="#80000000"
         android:ems="10"
+        android:hint="ejemplo@gmail.com"
         android:inputType="textEmailAddress"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hint"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/edtRegApellido"
         app:layout_constraintTop_toTopOf="@+id/textView10" />
 
@@ -103,8 +125,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
-        android:text="Dirección"
-        android:textColor="@color/black"
+        android:text="DIRECCIÓN:"
+        android:background="#80000000"
+        android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,10 +135,16 @@
 
     <EditText
         android:id="@+id/edtRegDireccion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="#80000000"
         android:ems="10"
+        android:hint="Calle S/N"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hint"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/edtRegEmail"
         app:layout_constraintTop_toTopOf="@+id/textView11" />
 
@@ -125,8 +154,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
-        android:text="Usuario"
-        android:textColor="@color/black"
+        android:text="USUARIO:"
+        android:background="#80000000"
+        android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
@@ -134,10 +164,16 @@
 
     <EditText
         android:id="@+id/edtRegUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="#80000000"
         android:ems="10"
+        android:hint="Ingrese su usuario"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hint"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/edtRegDireccion"
         app:layout_constraintTop_toTopOf="@+id/textView12" />
 
@@ -147,8 +183,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
-        android:text="Contraseña"
-        android:textColor="@color/black"
+        android:text="CONTRASEÑA:"
+        android:background="#80000000"
+        android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
@@ -156,10 +193,16 @@
 
     <EditText
         android:id="@+id/edtRegPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="#80000000"
         android:ems="10"
+        android:hint="Ingrese su contraseña"
         android:inputType="textPassword"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hint"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/edtRegUser"
         app:layout_constraintTop_toTopOf="@+id/textView13" />
 
@@ -171,7 +214,8 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="40dp"
         android:text="REGISTRAR"
-        android:background="@color/naranja"
+        android:background="#CC000000"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtRegPass" />

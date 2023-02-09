@@ -1,9 +1,9 @@
 package com.example.proyectoferreteria
 
+import android.app.PendingIntent.getActivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.example.proyectoferreteria.dataBase.AppDataBase
 import com.example.proyectoferreteria.databinding.ActivityInicioBinding
 import com.example.proyectoferreteria.model.User
@@ -12,6 +12,7 @@ import com.example.proyectoferreteria.utils.Constants
 class activity_inicio : AppCompatActivity() {
 
     lateinit var binding: ActivityInicioBinding
+    lateinit var global: User
 
     private val appDataBase: AppDataBase by lazy {
         AppDataBase.getInstance(this)
@@ -21,17 +22,27 @@ class activity_inicio : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInicioBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        usuarioIngreso()
+        //usuarioIngreso()
         eventos()
     }
 
     fun eventos() {
         binding.btnEmpleados.setOnClickListener {
-            startActivity(Intent(this, DetalleEmpleado::class.java))
+            val bundleInicio = Bundle().apply {
+                putSerializable(Constants.KEY_USER, usuarioIngreso())
+            }
+            startActivity(Intent(this, DetalleEmpleado::class.java).apply {
+                putExtras(bundleInicio)
+            })
         }
 
         binding.btnProductos.setOnClickListener {
-            startActivity(Intent(this, detalleProducto::class.java))
+            val bundleInicio = Bundle().apply {
+                putSerializable(Constants.KEY_USER, usuarioIngreso())
+            }
+            startActivity(Intent(this, detalleProducto::class.java).apply {
+                putExtras(bundleInicio)
+            })
         }
 
         binding.btnPerfil.setOnClickListener {
@@ -41,6 +52,10 @@ class activity_inicio : AppCompatActivity() {
             startActivity(Intent(this, activity_registroUser()::class.java).apply {
                 putExtras(bundleInicio)
             })
+        }
+
+        binding.btnCerrarSesion.setOnClickListener {
+            finishAffinity();
         }
     }
 

@@ -48,8 +48,6 @@ class activity_registroUser() : AppCompatActivity() {
             binding.edtRegPass.setText("")
         }
         binding.edtRegNombre.requestFocus()
-
-
     }
 
     private fun evento() {

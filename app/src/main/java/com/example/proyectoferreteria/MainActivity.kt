@@ -64,6 +64,8 @@ class MainActivity : AppCompatActivity() {
                             val bundleMain=Bundle().apply {
                                 putSerializable(Constants.KEY_USER, usuario)
                             }
+                            binding.edtUsuario.setText("")
+                            binding.edtPass.setText("")
                             startActivity(Intent(this, activity_inicio()::class.java).apply {
                                 putExtras(bundleMain)
                             })

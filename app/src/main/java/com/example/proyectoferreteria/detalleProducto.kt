@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.proyectoferreteria.dataBase.AppDataBaseProduct
 import com.example.proyectoferreteria.databinding.ActivityDetalleProductoBinding
+import com.example.proyectoferreteria.model.User
 import com.example.proyectoferreteria.utils.Constants
 import java.util.concurrent.Executors
 
@@ -46,7 +47,12 @@ class detalleProducto : AppCompatActivity() {
 
     fun regresar(){
         binding.fblRegresarUser.setOnClickListener {
-            startActivity(Intent(this, activity_inicio::class.java))
+            val bundleInicio = Bundle().apply {
+                putSerializable(Constants.KEY_USER, usuarioIngreso())
+            }
+            startActivity(Intent(this, activity_inicio::class.java).apply {
+                putExtras(bundleInicio)
+            })
         }
     }
 
@@ -72,5 +78,14 @@ class detalleProducto : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    fun usuarioIngreso(): User? {
+        val bundle = intent.extras
+        bundle?.let {
+            val empleado = bundle.getSerializable(Constants.KEY_USER) as User
+            return empleado
+        }
+        return null
     }
 }

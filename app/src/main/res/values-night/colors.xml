@@ -5,4 +5,6 @@
     <color name="rojo">#F01D24</color>
     <color name="azul">#510FD9</color>
     <color name="celeste">#12D9FC</color>
+    <color name="trannsparente">#00F43636</color>
+    <color name="hint">#EBDBD9</color>
 </resources>
