@@ -18,6 +18,8 @@ interface UserDAO {
     @Delete
     fun delete(user: User)
 
+    //@Query("DELETE FROM tblUser WHERE id = 2")
+
     //Devuelve toda la lista de mascotas
     @Query("select * from tblUser order by id")
     fun getUsers(): LiveData<List<User>>

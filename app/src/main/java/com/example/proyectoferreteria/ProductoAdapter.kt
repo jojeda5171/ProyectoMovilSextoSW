@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectoferreteria.databinding.ItemProductosBinding
+//import com.example.proyectoferreteria.databinding.ItemProductosBinding
 import com.example.proyectoferreteria.model.Product
 import com.squareup.picasso.Picasso
 
@@ -12,6 +13,7 @@ class ProductoAdapter (var productos:List<Product> = emptyList()): RecyclerView.
     //definir las funciones para manipular los registro
     lateinit var setOnClickListenerProductEdit: (Product)->Unit
     lateinit var setOnClickListenerProductDelete:(Product)->Unit
+    lateinit var setOnClickDetalle:(Product)->Unit
     //Crear el ViewHolder
     inner class ProductoAdapterViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         private var binding : ItemProductosBinding = ItemProductosBinding.bind(itemView)
@@ -28,6 +30,10 @@ class ProductoAdapter (var productos:List<Product> = emptyList()): RecyclerView.
 
             binding.btnEliminar.setOnClickListener {
                 setOnClickListenerProductDelete(producto)
+            }
+
+            binding.itemProducto.setOnClickListener {
+                setOnClickDetalle(producto)
             }
         }
     }
